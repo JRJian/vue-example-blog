@@ -3,25 +3,25 @@
     <div class="post-blog" v-if="!submitted">
       <h1>发表博文</h1>
       <div>
-        <span>标题:</span>
+        <label>标题:</label>
         <input type="text" v-model="post.title">
       </div>
       <div>
-        <span>博文:</span>
+        <label>博文:</label>
         <textarea v-model="post.content"/>
       </div>
-      <div>
-        <span>Vue.js</span>
+      <div id="checkboxes">
+        <label>Vue.js</label>
         <input type="checkbox" value="Vue.js" v-model="post.categories">
-        <span>React.js</span>
+        <label>React.js</label>
         <input type="checkbox" value="React.js" v-model="post.categories">
-        <span>Node.js</span>
+        <label>Node.js</label>
         <input type="checkbox" value="Node.js" v-model="post.categories">
-        <span>Angular.js</span>
+        <label>Angular.js</label>
         <input type="checkbox" value="Angular.js" v-model="post.categories">
       </div>
       <div>
-        <span>作者:</span>
+        <label>作者:</label>
         <select v-model="post.author">
           <option>Oscar</option>
           <option>Ga</option>
@@ -29,10 +29,10 @@
         </select>
       </div>
       <div>
-        <button @click="postAction()">提交</button>
+        <button id="submitButton" @click="postAction()">提交</button>
       </div>
     </div>
-    <div v-if="submitted">
+    <div id="preview" v-if="submitted">
       <h1>{{post.title}}</h1>
       <p>{{post.content}}</p>
       <ul>
@@ -88,11 +88,46 @@ export default {
 
 <style>
 div {
-  margin-top: 10px;
+  text-align: left;
+  box-sizing: border-box;
+  margin: 20px 0;
 }
 ul {
   width: 100px;
   margin: 0 auto;
+}
+label {
+  display: block;
+  margin: 20px 0 10px;
+}
+input[type="text"], textarea, select {
+  display: block;
+  width: 100%;
+  padding: 8px;
+}
+textarea {
+  height: 200px;
+}
+#submitButton {
+  display: block;
+  padding: 10px 20px;
+  background-color: crimson;
+  color: white;
+  border: 0;
+  font-weight: bold;
+  font-size: 1.5em;
+  border-radius: 3px;
+}
+#checkboxes label, 
+#checkboxes input {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+#preview {
+  padding: 10px;
+  border: 1px dotted #ccc;
+  margin: 30px 0;
 }
 </style>
 
